@@ -285,10 +285,10 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
 
 - (BOOL)isAppStoreVersionNewer:(NSString *)currentAppStoreVersion {
     // Current installed version is the newest public version or newer (e.g., dev version)
-    if ([[self currentInstalledVersion] compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
-        return true;
+    if ([self.bundleID isEqualToString:[[NSBundle mainBundle] bundleIdentifier]]) {
+        return [[self currentInstalledVersion] compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending;
     } else {
-        return false;
+        return [[self currentInstalledVersion] compare:currentAppStoreVersion options:NSNumericSearch] != NSOrderedDescending;
     }
 }
 
