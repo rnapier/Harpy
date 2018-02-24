@@ -61,6 +61,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
 @property (nonatomic, strong) NSDictionary <NSString *, id> *appData;
 @property (nonatomic, strong) NSDate *lastVersionCheckPerformedOnDate;
 @property (nonatomic, copy) NSString *appID;
+@property (nonatomic, copy) NSString *bundleID;
 @property (nonatomic, copy) NSString *currentInstalledVersion;
 @property (nonatomic, copy) NSString *currentAppStoreVersion;
 @property (nonatomic, copy) NSString *updateAvailableMessage;
@@ -86,13 +87,18 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
     return sharedInstance;
 }
 
-- (id)init {
+- (instancetype)init {
+    return [self initWithBundleIdentifier:nil currentVersion:nil];
+}
+
+- (instancetype)initWithBundleIdentifier:(NSString *)bundleIdentifier currentVersion:(NSString *)currentVersion {
     self = [super init];
 
     if (self) {
+        _bundleID = bundleIdentifier ? bundleIdentifier : [[NSBundle mainBundle] bundleIdentifier];
+        _currentInstalledVersion = currentVersion ? currentVersion : [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
         _alertType = HarpyAlertTypeOption;
         _lastVersionCheckPerformedOnDate = [[NSUserDefaults standardUserDefaults] objectForKey:HarpyDefaultStoredVersionCheckDate];
-        _currentInstalledVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
         _showAlertAfterCurrentVersionHasBeenReleasedForDays = 1;
     }
 
@@ -437,10 +443,6 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
 }
 
 #pragma mark - NSBundle
-
-- (NSString *)bundleID {
-    return [NSBundle mainBundle].bundleIdentifier;
-}
 
 - (NSString *)bundlePath {
     return [[NSBundle bundleForClass:[self class]] pathForResource:@"Harpy" ofType:@"bundle"];

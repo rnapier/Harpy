@@ -160,6 +160,11 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 + (Harpy *)sharedInstance;
 
 /**
+ Initializer in order to check custom bundle identifiers or versions. If nil, use information from current bundle.
+ */
+- (instancetype)initWithBundleIdentifier:(NSString *)bundleIdentifier currentVersion:(NSString *)currentVersion;
+
+/**
  Checks the installed version of your application against the version currently available on the iTunes store.
  If a newer version exists in the AppStore, Harpy prompts your user to update their copy of your app.
  Place in @c application:didFinishLaunchingWithOptions: @b AFTER calling @c makeKeyAndVisible on your @c UIWindow iVar.
