@@ -1,7 +1,10 @@
 # Harpy
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
-[![CocoaPods](https://img.shields.io/cocoapods/v/Harpy.svg)](https://cocoapods.org/pods/Harpy)  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![CocoaPods](https://img.shields.io/cocoapods/dt/Harpy.svg)](https://cocoapods.org/pods/Harpy) [![CocoaPods](https://img.shields.io/cocoapods/dm/Harpy.svg)](https://cocoapods.org/pods/Harpy)
+[![Build Status](https://travis-ci.org/ArtSabintsev/Harpy.svg?branch=master)](https://travis-ci.org/ArtSabintsev/Harpy)
+
+[![CocoaPods](https://img.shields.io/cocoapods/v/Harpy.svg)](https://cocoapods.org/pods/Harpy)  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![CocoaPods](https://img.shields.io/cocoapods/dt/Harpy.svg)](https://cocoapods.org/pods/Harpy)
+
 ---
 
 ## About
@@ -14,12 +17,12 @@ Harpy is built to work with the [Semantic Versioning](http://www.semver.org) sys
 - Harpy only works with numbers.
 
 ## Swift Support
-Harpy was ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [**here**](https://github.com/ArtSabintsev/Siren).
+Harpy was ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren).
 
 ## Features
 - [x] CocoaPods Support
 - [x] Carthage Support
-- [x] Localized for 30+ languages (See **Localization**)
+- [x] Localized for 40+ languages (See **Localization**)
 - [x] Pre-Update Device Compatibility Check (See **Device Compatibility**)
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
@@ -93,7 +96,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	 Please use the HarpyLanguage constants defined in Harpy.h. */
 	[[Harpy sharedInstance] setForceLanguageLocalization:<#HarpyLanguageConstant#>];
 
-        /* (Optional): Delays the update prompt by a specific number of days. By default, 
+        /* (Optional): Delays the update prompt by a specific number of days. By default,
 	this value is set to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.*/
         [[Harpy sharedInstance] setShowAlertAfterCurrentVersionHasBeenReleasedForDays:<#Int#>];
 
